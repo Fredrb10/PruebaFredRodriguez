@@ -3,6 +3,7 @@ using System.Reflection;
 using MediatR;
 using Booking.Persistence.Database;
 using Booking.Service.Queries;
+using Microsoft.OpenApi.Models;
 
 namespace Booking.Api
 {
@@ -24,13 +25,29 @@ namespace Booking.Api
 
             services.AddMediatR(Assembly.Load("Booking.Service.EventHandlers"));
 
-            services.AddTransient<ICheckHotelsQueryService, CheckHotelsQueryService>();
+            services.AddTransient<IReservationQueryService, ReservationQueryService>();
             services.AddTransient<IClientQueryService, ClientQueryService>();
 
             services.AddControllers();
 
+            AddSwagger(services);
+
         }
 
+        private void AddSwagger(IServiceCollection services)
+        {
+            services.AddSwaggerGen(options =>
+            {
+                var groupName = "v1";
+
+                options.SwaggerDoc(groupName, new OpenApiInfo
+                {
+                    Title = $"Prueba Tecnica {groupName}",
+                    Version = groupName,
+                    Description = "Fred Rodriguez",
+                });
+            });
+        }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -40,6 +57,12 @@ namespace Booking.Api
             }
 
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Prueba Fred Rodriguez V1");
+            });
 
             app.UseRouting();
 

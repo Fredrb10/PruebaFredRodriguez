@@ -25,6 +25,13 @@ namespace Admin.Api.Controllers
             return await _roomQueryService.GetAllAsync();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> CreateRoom(RoomCreateCommand command)
+        {
+            await _mediator.Publish(command);
+            return NoContent();
+        }
+
         [HttpPut]
         public async Task<IActionResult> UpdateRoom(RoomUpdateCommand command)
         {

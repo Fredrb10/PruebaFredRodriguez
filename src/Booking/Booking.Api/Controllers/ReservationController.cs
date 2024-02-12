@@ -11,10 +11,10 @@ namespace Booking.Api.Controllers
     [Route("[Controller]")]
     public class ReservationController : ControllerBase
     {
-        private readonly ICheckHotelsQueryService _hotelQueryService;
+        private readonly IReservationQueryService _hotelQueryService;
         private readonly IMediator _mediator;
 
-        public ReservationController(ICheckHotelsQueryService hotelQueryService, IMediator mediator)
+        public ReservationController(IReservationQueryService hotelQueryService, IMediator mediator)
         {
             _hotelQueryService = hotelQueryService;
             _mediator = mediator;
@@ -25,10 +25,19 @@ namespace Booking.Api.Controllers
             return await _hotelQueryService.GetAvailableHotel(consult);
         }
 
-        [HttpGet("{id}")]
-        public async Task<List<ReservationDto>> GetReservationxHotel(int id)
+        [HttpGet]
+        [Route("ReservationxHotel/{hotelId}")]
+
+        public async Task<List<ReservationDto>> GetReservationxHotel(int hotelId)
         {
-            return await _hotelQueryService.GetReservationsHotel(id);
+            return await _hotelQueryService.GetReservationsHotel(hotelId);
+        }
+
+        [HttpGet]
+        [Route("GetReservation/{reservationId}")]
+        public IEnumerable<ReservationDetail> GetReservation(int reservationId)
+        {
+            return _hotelQueryService.Reservation(reservationId);
         }
 
         [HttpPost]

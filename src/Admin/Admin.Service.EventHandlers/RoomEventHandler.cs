@@ -1,9 +1,10 @@
-﻿using Admin.Persistence.Database;
+﻿using Admin.Domain;
+using Admin.Persistence.Database;
 using Admin.Service.EventHandlers.Commands;
 using MediatR;
 namespace Admin.Service.EventHandlers
 {
-    public class RoomEventHandler : INotificationHandler<RoomUpdateCommand>, INotificationHandler<RoomEnableCommand>
+    public class RoomEventHandler : INotificationHandler<RoomUpdateCommand>, INotificationHandler<RoomEnableCommand>, INotificationHandler<RoomCreateCommand>
     {
         private readonly ApplicationDbContext _context;
 
@@ -30,6 +31,21 @@ namespace Admin.Service.EventHandlers
             rooms.Enabled = command.Enabled;
             await _context.SaveChangesAsync();
 
+        }
+
+        public async Task Handle(RoomCreateCommand command, CancellationToken cancellationToken)
+        {
+            await _context.AddAsync(new Room
+            {
+                IdHotel = command.IdHotel,
+                IdRoomType = command.IdRoomType,
+                RoomNumber = command.RoomNumber,
+                Floor = command.Floor,
+                BasePrice = command.BasePrice,
+                Tax = command.Tax,
+                Enabled = command.Enabled
+            });
+            await _context.SaveChangesAsync();
         }
 
     }

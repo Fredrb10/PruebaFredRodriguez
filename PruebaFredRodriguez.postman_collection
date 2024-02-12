@@ -194,6 +194,34 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"IdHotel\":4,\r\n    \"IdRoomType\":1,\r\n    \"RoomNumber\":506,\r\n    \"Floor\":5,\r\n    \"BasePrice\":50000,\r\n    \"Tax\":9500,\r\n    \"Enabled\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:44382/Room",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44382",
+									"path": [
+										"Room"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}
@@ -267,7 +295,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5116/Reservation/1",
+							"raw": "http://localhost:5116/Reservation/ReservationxHotel/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -275,6 +303,28 @@
 							"port": "5116",
 							"path": [
 								"Reservation",
+								"ReservationxHotel",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar x Reserva",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5116/Reservation/GetReservation/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5116",
+							"path": [
+								"Reservation",
+								"GetReservation",
 								"1"
 							]
 						}
