@@ -1,0 +1,287 @@
+{
+	"info": {
+		"_postman_id": "922ccb5e-9a1d-4add-ac18-93fb50d5af5c",
+		"name": "ApiPruebaFredRodriguez",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13649392"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Hotel",
+					"item": [
+						{
+							"name": "Listar Hoteles",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:44382/Hotel",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44382",
+									"path": [
+										"Hotel"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Crear Hotel",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"HotelTypeId\":2,\r\n    \"CityId\":1,\r\n    \"Name\":\"Hotel Buen Vivir\",\r\n    \"Address\":\"Cra 50 # 3 - 28\",\r\n    \"Phone\": \"6014280015\",\r\n    \"Enabled\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:44382/Hotel",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44382",
+									"path": [
+										"Hotel"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualiza Hotel",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"HotelId\":1,\r\n    \"HotelTypeId\":2,\r\n    \"CityId\":1,\r\n    \"Name\":\"Nuevo Nombre\",\r\n    \"Address\":\"Cll 30 # 8 - 52\",\r\n    \"Phone\": \"6014282058\",\r\n    \"Enabled\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:44382/Hotel",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44382",
+									"path": [
+										"Hotel"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Habilitar Hotel",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"HotelId\":2,\r\n    \"Enabled\":0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:44382/Hotel",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44382",
+									"path": [
+										"Hotel"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Habitacion",
+					"item": [
+						{
+							"name": "Listar Habitaciones",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:44382/Room",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44382",
+									"path": [
+										"Room"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualiza Habitacion",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"RoomId\":1,\r\n    \"IdHotel\":3,\r\n    \"IdRoomType\":1,\r\n    \"RoomNumber\":106,\r\n    \"Floor\":1,\r\n    \"BasePrice\":45000,\r\n    \"Tax\":8550\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:44382/Room",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44382",
+									"path": [
+										"Room"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Habilitar Habitacion",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"RoomId\":2,\r\n    \"Enabled\":0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:44382/Room",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44382",
+									"path": [
+										"Room"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Reserva",
+			"item": [
+				{
+					"name": "Disponibilidad Hotel",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CityId\":1,\r\n    \"Capacity\":3,\r\n    \"AdmissionDate\":\"2024-02-18\",\r\n    \"DepartureDate\":\"2024-02-20\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5116/Reservation",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5116",
+							"path": [
+								"Reservation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Reserva",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"DocumentType\":1,\r\n    \"DocumentNumber\":1050089156,\r\n    \"Name\":\"Juan\",\r\n    \"LastName\":\"Perez\",\r\n    \"Birthdate\":\"1980-05-04\",\r\n    \"Gender\":\"M\",\r\n    \"Email\":\"juan.p@hotmail.com\",\r\n    \"Phone\":\"3135048752\",\r\n    \"EmergencyContact\":\"Juan Pinzon\",\r\n    \"EmergencyContactPhone\":\"3155070861\",\r\n\r\n    \"HotelId\":1,\r\n    \"RoomId\":5,\r\n    \"CustomerId\":1050089156,\r\n    \"AdmissionDate\":\"2024-02-18\",\r\n    \"DepartureDate\":\"2024-02-20\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5116/Reservation",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5116",
+							"path": [
+								"Reservation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Reserva x Hotel",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5116/Reservation/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5116",
+							"path": [
+								"Reservation",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
